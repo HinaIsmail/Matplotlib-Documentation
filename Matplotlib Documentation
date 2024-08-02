@@ -1,0 +1,149 @@
+# This Python 3 environment comes with many helpful analytics libraries installed
+# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
+# For example, here's several helpful packages to load
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+
+# Input data files are available in the read-only "../input/" directory
+# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
+
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
+# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+import matplotlib.pyplot as plt
+plt.figure(figsize=(20,20))
+plt.imshow(plt.imread("../input/matplotlib/Capture2.PNG"))
+x = np.linspace(0,6,50)
+y = x**2 + 2*x + 3
+plt.plot(x,y)
+plt.xlabel("X Label")
+plt.ylabel("Y Label")
+plt.title("Title")
+plt.style.use("ggplot")
+plt.subplot(1,2,1) #This is the first plot in the two column plot in the same row
+plt.plot(x,y,"r--")
+plt.subplot(1,2,2)
+plt.plot(y, x, 'g*-')
+plt.subplot(2,2,1) #This refers to the first plot
+plt.plot(x,y,"r--")
+plt.subplot(2,2,2) #This refers to the second plot
+plt.plot(x,y,"g+")
+plt.subplot(2,2,3) #This refers to the third plot
+plt.plot(x,y,"r--")
+plt.subplot(2,2,4) #This refers to the fourth plot
+plt.plot(y,x,"y+")
+fig = plt.figure()
+axes1 = fig.add_axes([0.1,0.1,0.8,0.8])#This numbers represents percentage 
+axes1.set_xlabel("1. X Label")
+axes1.set_ylabel("1. Y Label")
+axes2 = fig.add_axes([0.4,0.1,0.8,0.8])
+axes2.set_xlabel("2. X Label")
+axes2.set_ylabel("2. Y Label")
+
+fig = plt.figure()
+axes1 = fig.add_axes([0.1,0.1,0.1,0.8])#This numbers represents percentage 
+axes1.set_xlabel("1. X Label")
+axes1.set_ylabel("1. Y Label")
+axes2 = fig.add_axes([0.4,0.1,0.8,0.1])
+axes2.set_xlabel("2. X Label")
+axes2.set_ylabel("2. Y Label")
+fig = plt.figure()
+axes1 = fig.add_axes([0,1,0.8,0.8]) 
+axes1.set_xlabel("1. X Label")
+axes1.set_ylabel("1. Y Label")
+axes2 = fig.add_axes([0,0,0.8,0.8])
+axes2.set_xlabel("2. X Label")
+axes2.set_ylabel("2. Y Label")
+fig = plt.figure()
+axes1 = fig.add_axes([0,0,0.8,0.8])#This numbers represents percentage 
+axes1.set_xlabel("1. X Label")
+axes1.set_ylabel("1. Y Label")
+axes2 = fig.add_axes([1,0,0.8,0.8])
+axes2.set_xlabel("2. X Label")
+axes2.set_ylabel("2. Y Label")
+fig = plt.figure()
+axes1 = fig.add_axes([0,0,0.8,0.8])
+axes1.set_xlabel("1. X Label")
+axes1.set_ylabel("1. Y Label")
+axes2 = fig.add_axes([1,0,0.8,0.8])
+axes2.set_xlabel("2. X Label")
+axes2.set_ylabel("2. Y Label")
+axes3 = fig.add_axes([0,1,0.8,0.8])
+axes3.set_xlabel("3. X Label")
+axes3.set_ylabel("3. Y Label")
+axes4 = fig.add_axes([1,1,0.8,0.8])
+axes4.set_xlabel("4. X Label")
+axes4.set_ylabel("4. Y Label")
+fig = plt.figure(figsize=(12,10))
+axes1 = fig.add_axes([0,0,0.8,0.8])
+axes1.set_xlabel("X")
+axes1.set_ylabel("Y")
+axes1.plot(x,y,"g--")
+axes2 = fig.add_axes([0.1,0.38,0.4,0.4])
+axes2.set_xlabel("Y")
+axes2.set_ylabel("X")
+axes2.plot(y,x,"r--")
+fig, axes = plt.subplots(nrows=1, ncols=2) # We can specify number of rows and columns with nrows and ncols arguments
+fig, axes = plt.subplots(nrows=1, ncols=2)
+axes[0].plot(x,y,"r--")
+axes[1].plot(y,x,"g*")
+fig,axes = plt.subplots(nrows=2,ncols=3)
+
+axes[0][0].plot(x,y)
+axes[0][1].plot(y,x)
+axes[0][2].plot(x,y)
+axes[1][0].plot(y,x)
+axes[1][1].plot(x,y)
+axes[1][2].plot(y,x)
+plt.tight_layout() 
+fig,axes = plt.subplots(nrows=2, ncols=1)
+axes[0].plot(x,x**2)
+axes[1].plot(x,x**3)
+fig.savefig("test.png") 
+fig,axes = plt.subplots(nrows=2, ncols=1)
+axes[0].plot(x,x**2,"r--", label="X Squared")
+axes[0].legend()
+axes[1].plot(x,x**3,label="X Cubic")
+axes[1].legend()
+fig,axes = plt.subplots(nrows=2, ncols=1)
+axes[0].plot(x,x**2,"r--", label="X Squared")
+axes[0].legend(loc=4)
+axes[1].plot(x,x**3,label="X Cubic")
+axes[1].legend(loc=10)
+fig, axes = plt.subplots() # If we do not specify number of rows and columns, it will create a single plot figure
+axes.plot(x,x**2, "b.-")
+axes.plot(x,x**3, "g--")
+axes.plot(x,x,"r+")
+fig,ax=plt.subplots(figsize=(10,8))
+ax.plot(x,x+1, color="red", linestyle="solid", alpha=0.4) #alpha parameter refers to how strong the color will be
+ax.plot(x,x+1.5,color="green", linestyle="dotted")
+ax.plot(x,x+2,color="blue",linestyle="dashed")
+ax.plot(x,x+2.5,color="purple",linestyle="dashdot")
+ax.plot(x,x+3,color="purple",linestyle=":")
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+plt.scatter(x=x, y=y,marker="<",cmap="autumn",color = '#88c999')
+x = 4 + np.random.normal(0, 2, 24)
+y = 4 + np.random.normal(0, 2, len(x))
+# size and color:
+sizes = np.random.uniform(15, 80, len(x))
+colors = np.random.uniform(15, 80, len(x))
+
+# plot
+fig, ax = plt.subplots()
+
+ax.scatter(x, y, s=sizes, c=colors, vmin=0, vmax=100)
+np.random.seed(3)
+x = 0.5 + np.arange(8)
+y = np.random.uniform(2, 7, len(x))
+
+# plot
+fig, ax = plt.subplots()
+
+ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
+plt.style.use("classic")
